@@ -1,0 +1,18 @@
+ONEWAY COMMUNICATION
+dspmq ->for display list of qmanager
+dltmqm VAMSI ->for delet
+crtmqm VAMSI -> for create                                                                          crtmqm KATTA -> for create
+strmqm VAMSI -> for start                                                                           strmqm KATTA -> for start                                                                           
+runmqsc VAMSI -> for run                                                                            runmqsc KATTA -> for run                                                            
+SENDER:   VAMSI                                                                                             RESIVER: KATTA
+DEFINE QLOCAL(V) USAGE(XMITQ))                                                                      DEFINE QLOCAL(K.L)
+DEFINE QREMOTE(V.TO.K) RQMNAME(KATTA) RNAME(K.L) XMITQ(V)                                           DEFINE LISTENER(KL) TRPTYPE(TCP) PORT(1414)
+DEFINE CHANNEL(K.C) CHLTYPE(SDR) CONNAME('192.168.3.51(1414)') XMITQ(v)                             DEFINE CHANNEL(K.C) CHLTYPE(RCVR) TRPTYPE(TCP)
+START CHANNEL(K.C)                                                                                  START LISTENER(KL)
+DISPLAY CHSTATUS(K.C)                                                                               DISPLAY LSSTATUS(KL)
+Then go to the path /opt/mqm/samp/bin/ to send and resive message
+./amqsput qlocal_name qmanagername ->send message ex:./amqsput V VAMSI
+./amqsget qlocal_name qmanagername ->resive message ex:./amqsget K.L KATTA
+ 
+TWOWAY COMMUNICATION
+
