@@ -14,5 +14,10 @@ Then go to the path /opt/mqm/samp/bin/ to send and resive message
 ./amqsput qlocal_name qmanagername ->send message ex:./amqsput V VAMSI
 ./amqsget qlocal_name qmanagername ->resive message ex:./amqsget K.L KATTA
  
-TWOWAY COMMUNICATION
+TWOWAY COMMUNICATION :replace same process on two sides 
+TRIGGER:
+ALTER QLOCAL(V) TRIGGER TRIGTYPE(EVERY) TRIGDATA(#sender channel name (K.C)) INITQ(SYSTEM.CHANNEL.INITQ)
+ALTER CHANNEL(K.C) CHLTYPE(SDR) DISCINT(20)
+
+
 
