@@ -24,7 +24,16 @@ DISPLAY CHSTATUS(K.C)
 then send the messages and check the status.
 
 SSL:
-
+DISPLAY QMGR
+ALTER QMGR SSLEV(ENABLED)
+/opt/mqm/java/jre64/jre/bin/ run ./ikeymen
+KEY DATABASE TYPE :CMS
+FILE NAME:key.kdb
+LOCATION:/var/mqm/qmgrs/B/ssl ->browse
+ok
+PASSWORD:XXXXXX
+CONFORM PASSWORD:XXXX
+ON STASH PASSWORD TO FILE 
 
 
 
