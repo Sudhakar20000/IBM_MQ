@@ -47,6 +47,14 @@ transfer arm files
 then SELECT SIGNER CERTIFICATE -> add -> transfered file(b.arm) -> lablename (ibmwebspheremqb)
 DO the same process in second image
 
+excute command for both sender and resiver channels in two images
+ALTER CHANNEL(A.C) CHLTYPE(SDR) SSLCIPH(TLS_RSA_WITH_AES_256_CBC_SHA256)
+ALTER CHANNEL(B.C) CHLTYPE(RCVR) SSLCIPH(TLS_RSA_WITH_AES_256_CBC_SHA256)
+STOP CHANNEL(A.C) -> stop sender channel only
+START CHANNEL(A.C)
+REFRESH SECURITY TYPE(SSL)
+
+
 
 
 
