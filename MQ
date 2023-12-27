@@ -41,6 +41,12 @@ ok
 click on EXTRACT CIRTIFICATE
 change name of aram file as qmanager_name.arm(b.arm)
 ok
+DO THE SAME PROCESS IN ANOTHER IMAGE 
+
+transfer arm files 
+then SELECT SIGNER CERTIFICATE -> add -> transfered file(b.arm) -> lablename (ibmwebspheremqb)
+DO the same process in second image
+
 
 
 
