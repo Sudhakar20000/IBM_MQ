@@ -15,9 +15,18 @@ Then go to the path /opt/mqm/samp/bin/ to send and resive message
 ./amqsget qlocal_name qmanagername ->resive message ex:./amqsget K.L KATTA
  
 TWOWAY COMMUNICATION :replace same process on two sides 
-TRIGGER:
+TRIGGER: it should be applied to sender channel for both two way
 ALTER QLOCAL(V) TRIGGER TRIGTYPE(EVERY) TRIGDATA(#sender channel name (K.C)) INITQ(SYSTEM.CHANNEL.INITQ)
-ALTER CHANNEL(K.C) CHLTYPE(SDR) DISCINT(20)
+ALTER CHANNEL(K.C) CHLTYPE(SDR) DISCINT(20) ->Disconnection Interval
+STOP CHANNEL(K.C)
+START CHANNEL(K.C)
+DISPLAY CHSTATUS(K.C)
+then send the messages and check the status.
+
+SSL:
+
+
+
 
 
 
