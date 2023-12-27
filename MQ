@@ -34,7 +34,13 @@ ok
 PASSWORD:XXXXXX
 CONFORM PASSWORD:XXXX
 ON STASH PASSWORD TO FILE 
-
+ok
+click on NEW SELF-SIGN
+KEY LABEL:ibmwebspheremqb(b-qmanager name)
+ok
+click on EXTRACT CIRTIFICATE
+change name of aram file as qmanager_name.arm(b.arm)
+ok
 
 
 
