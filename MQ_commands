@@ -1,0 +1,10 @@
+DISPLAY CHSTATUS(B.C) -> to see the channel status
+DISPLAY CHSTATUS(*) ALL ->to see all channels status
+DISPLAY LSSTATUS(A.LL)
+DISPLAY LSSTATUS(*) ALL
+DISPLAY QLOCAL(A.L) CURDEPTH -> to see the resiver message curdepth
+DISPLAY QMGR -> to get all attributes of qmgr
+
+
+
+
