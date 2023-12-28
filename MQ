@@ -54,6 +54,80 @@ STOP CHANNEL(A.C) -> stop sender channel only
 START CHANNEL(A.C)
 REFRESH SECURITY TYPE(SSL)
 
+MULTI-INSTANCE
+SERVER -1
+go to root 'su'
+  |
+yum install nfs* -y
+   |
+mkdir EIDIKO
+   |
+cd /var/EIDIKO
+   |
+mkdir qmgrs
+   |
+mkdir logs
+   |
+chmod -R 777 EIDIKO
+   |
+chmod -R mqm:mqm EIDIKO
+   |
+vi /etc/exports
+   |
+/var/EIDIKO *(rw,sync,no,wdelay,frid=0)
+    |
+   wq!
+    |
+exportfs -va
+    |
+systemctl start nfs*
+    |
+system status nfs*
+    |
+systemctl status nfs.service
+    |
+  su mqm
+    |
+crtmqm -ld /var/EIDIKO/logs -md /var/EIDIKO/qmgrs NEW
+    |
+ dspmqinf -o command WAS
+    |
+strmqm -x NEW
+    |
+endmqm -s NEW
+
+SERVER 2
+
+go to root 'su'
+  |
+yum install nfs* -y
+   |
+mkdir EIDIKO
+   |
+cd /var/EIDIKO
+   |
+mkdir qmgrs
+   |
+mkdir logs
+   |
+chmod -R 777 EIDIKO
+   |
+chmod -R mqm:mqm EIDIKO 
+   |
+mount -t nfs4 -o hard,intr 192.168.2.134:/ /var/EIDIKO
+   du -h
+   |
+su - mqm
+   |
+past line executed from the server 1 command  (dspmqinf -o command WAS)
+   |
+strmqm -x NEW
+    |
+endmqm -s NEW
+
+
+    
+
 
 
 
