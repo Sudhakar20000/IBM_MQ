@@ -7,4 +7,106 @@ DISPLAY QMGR -> to get all attributes of qmgr
 
 
 
+NOTES
+Objects:
+Queue manager
+Queue
+Channel
+Listener
+Service objects
+Name list
+Process definition
+Pub& Sub
+
+Crtmqm name -for creating manager
+Dspmqm -displaying manager
+Note:after creating manager state is ended immediately
+Strmqm name - to start manager
+Note:then the start will be running
+Q:what is manager
+A:first and foremost object for MQ 
+QManager is the place where MQ objects interact with each other for putting and getting messages.
+
+Dltmqm name:for delect QManager
+Note: we can not delete running QManager we have to end
+Endmqm name :to stop / end QManager
+Runmqsc: script command for creating channel and listener etc. inside QManager mqsc commands will be executed outside  QManager control command will executed it is level 
+
+Mqsc commands:
+Alter
+Clear
+Define
+Display
+End
+Exit
+Ping
+Purge
+Quit
+Refresh
+Reset
+Resolve
+Resume
+Set
+Start
+Stop
+Suspend
+For coming out from QManager we use end, quit,exit.
+
+Display Qmgr :Display QManager properties like create date time.
+Display QMSTATUS ALL : To see the status of QManager
+Note: ounce object name is created it can not be changed or duplicate. Ibm mq is case sensitive.
+ For creating objects   we have 3 types of commands
+ 1 control commands(os level)
+ 2 mqsc commands(qmgr)
+ 3 ocf command
+ QUEUE:
+ 1.PREDEFINED QUEUES
+    LOCAL QUEUE
+    ALIAS QUEUE
+    REMOTE QUEUE
+    MODEL QUEUE
+  2.DYNAMIC QUEUE
+     PERMANENT DYNAMIC QUEUE
+     TEMPERORY DYNAMIC QUEUE
+DEFINE QLOCAL(NAME) : creating local queue
+DESPLAY QLOCAL (NAME): To see whether QLOCAL is created are not and date, time.
+CLRDEPTH: current dupth it show whether messages available present count.
+MAXDEPTH:the queue can hold maximum 5000 messages only.
+
+amqsput remoteqname qmanagername:to put messages
+
+amqsget qname qmanagername:to get messages 
+
+The MAXDEPTH we can increase to 999999999
+
+If we want change any property we use alter.changing MAXDEPTH as 10
+Ex: ALTER QLOCAL(NAME) MAXDEPTH (10)
+
+MQRC  (error code):mq resion code to check what error.
+
+MAXMSGL(max message length): maximum size of one message default size is 4mb we can increase maximum upto 100mb only.
+DELETE QLOCAL (NAME) :To delete QLOCAL 
+Note:we can delete if queue is empty only.
+
+CLEAR QLOCAL(NAME): we are deleted messages with out getting messages.
+
+DEFPSIST(NO): The default def persistenc is no is message type is non persistenc messages 
+
+In MQ we have two types of messages persistenc and non persistenc messages 
+Non persistenc messages will be discarded or deleted during 
+QManager is restarted. Persistenc messages store in hard-disk and non persistenc messages will store in QManager buffer.
+Note:0=non persistenc 1=persistenc when we make application level as 1 and queue level as 0 it will take application level only. If we have not mentioned anything in application level thebn it will take queue level.
+
+
+DISPLAY QLOCAL (SYSTEM.DEFAULT.LOCAL.QUEUE) -this is default local queue or parent queue this property will come to whatever we create local queue like Child. If we delete default queue we can not create queues in that QManager and we can't create default queue
+Note:if default queue is deleted follow the steps
+1 ENDMQM QManager name -end the QManager 
+2 STRMQM -c QManager nane - will create replace the objects 
+3 STRMQM QManager name -start.
+
+If you have two queue 'a' and 'b' .the properties of 'a' has alter and you want 'a' properties to 'b' also command is 
+DEFINE QLOCAL(b) LIKE(a)
+
+
+
 
