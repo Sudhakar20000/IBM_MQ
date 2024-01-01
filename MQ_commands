@@ -4,9 +4,6 @@ DISPLAY LSSTATUS(A.LL)
 DISPLAY LSSTATUS(*) ALL
 DISPLAY QLOCAL(A.L) CURDEPTH -> to see the resiver message curdepth
 DISPLAY QMGR -> to get all attributes of qmgr
-CRTMQM -SA QMGR1 ->it will create and stat auto
-AMQMDAIN AUTO QMGR2 ->to move q from manual to auto start
-AMQMDAIN MANUAL QMGR2 -> auto to manual
 
 
 NOTES
