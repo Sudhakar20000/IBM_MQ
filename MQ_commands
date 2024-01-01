@@ -4,7 +4,9 @@ DISPLAY LSSTATUS(A.LL)
 DISPLAY LSSTATUS(*) ALL
 DISPLAY QLOCAL(A.L) CURDEPTH -> to see the resiver message curdepth
 DISPLAY QMGR -> to get all attributes of qmgr
-
+CRTMQM -SA QMGR1 ->it will create and stat auto
+AMQMDAIN AUTO QMGR2 ->to move q from manual to auto start
+AMQMDAIN MANUAL QMGR2 -> auto to manual
 
 
 NOTES
@@ -106,6 +108,47 @@ Note:if default queue is deleted follow the steps
 
 If you have two queue 'a' and 'b' .the properties of 'a' has alter and you want 'a' properties to 'b' also command is 
 DEFINE QLOCAL(b) LIKE(a)
+
+VIDEO 5:
+
+how to see no.of queues in qmanager
+DISPLAY QLOCAL(*)
+DISPLAY QLOCAL(Q*) it will display only starting with q
+
+DISPLAY QLOCAL(QNAME)
+DISPLAY QSTATUS(QNAME)
+
+MONQ(OFF) it is monotering b default is off if we make it as high or low and medium in status we can see 
+LGETDATE() LGETTIME()  last date and time message get 
+LGETDATE() LPUTTIME()  last date message put
+NOTE:this date we can see when we make monq as high
+ALTER QLOCAL(QNAME) MONQ(HIGH)
+
+MSGAGE() it is message age is default unlimit
+set the message age
+DISPLAY QLOCAL(QNAME)
+ALTER QLOCAL(QNAME) CUSTEM('CAPEXPRY(600)')  ->we have set expary for message of one minite
+if it is persistence or not if we set age it will expair
+
+DISPLAY QSTATUS(QNAME)
+OPPROCS() the no of queues connected to put messages
+IPPROCS() the no of  queues connected to get messages
+
+DISPLAY QSTATUS(QNAME) TYPE(HANDLE) OPENTYPE(OUTPUT) ->it get user id noof application to put messages
+DISPLAY QSTATUS(QNAME) TYPE(HANDLE) OPENTYPE(INPUT) ->it get user id noof application to get messages
+  
+ALIAS: alias key does not hold message if we put message to b it will go to a and we can get from b 
+DEFINE QLOCAL(A)
+DEFINE QALIAS(B) TARGET(A)
+DISPLAY QALIAS(B)
+
+
+
+
+
+
+
+
 
 
 
