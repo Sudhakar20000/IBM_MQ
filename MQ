@@ -70,7 +70,7 @@ mkdir logs
    |
 chmod -R 777 EIDIKO
    |
-chmod -R mqm:mqm EIDIKO
+chown -R mqm:mqm EIDIKO
    |
 vi /etc/exports
    |
@@ -112,7 +112,7 @@ mkdir logs
    |
 chmod -R 777 EIDIKO
    |
-chmod -R mqm:mqm EIDIKO 
+chown -R mqm:mqm EIDIKO 
    |
 mount -t nfs4 -o hard,intr 192.168.2.134:/ /var/EIDIKO
    du -h
