@@ -4,6 +4,8 @@ DISPLAY LSSTATUS(A.LL)
 DISPLAY LSSTATUS(*) ALL
 DISPLAY QLOCAL(A.L) CURDEPTH -> to see the resiver message curdepth
 DISPLAY QMGR -> to get all attributes of qmgr
+endmqm -i MAIN -> force end qmanager
+rmvmqinf MAIN  ->force remove of qmanager
 
 
 NOTES
